@@ -1,0 +1,54 @@
+<div class="home-wrapper">
+    <header class="header">
+        <div class="logo">
+            <h2>Online Flight Booking</h2>
+        </div>
+        <nav>
+            <a href="#">My Flights</a>
+            <!-- <br> -->
+            <a href="#">Tickets</a>
+            <!-- <br> -->
+            <button (click)="onLogout()" class="logout-btn">Выйти</button>
+        </nav>
+    </header>
+    <main class="hero">
+        <div class="search-box">
+
+            <div class="tabs">
+                <button class="active" (click)="isRoundTrip = true">ROUND TRIP</button>
+                <button >ONE WAY</button>
+            </div>
+        
+            <div class="inputs-grid">
+                <div class="field">
+                    <label>From</label>
+                    <input type="text" [(ngModel)]="searchQuery.from" placeholder="Departure">
+                </div>
+                <div class="field">
+                    <label>To</label>
+                    <input type="text" [(ngModel)]="searchQuery.to" placeholder="Arrival">
+                </div>
+                <div class="field">
+                    <label>Depart</label>
+                    <input type="date" [(ngModel)]="searchQuery.date">
+                </div>
+                <div class="field">
+                    <label>Passenger</label>
+                    <input type="number" [(ngModel)]="searchQuery.passengers">
+                </div>
+            </div>
+
+            <button class="search-btn" (click)="onSearch()">поиск рейсов</button>
+        </div>
+    </main>
+    <section class="results">
+        @for(flight of flights ; track flight.id){
+            <div class="flight-card">
+                <div class="airline">{{ flight.airline }}</div>
+                <div class="route"> {{flight.from}} -> {{ flight.to }}</div>
+                <div class="price">{{ flight.price }} KZT</div>
+                <button class="book-btn">Забронировать</button>
+            </div>
+        }
+    </section>
+</div>
