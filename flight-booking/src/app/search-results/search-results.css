@@ -1,0 +1,84 @@
+/* Контейнер для всей страницы */
+.results-container {
+    padding: 40px 10%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    min-height: 100vh;
+}
+
+/* Заголовок в стиле "Flights From: Almaty to Astana" */
+.results-container h1 {
+    color: #2c3e50;
+    text-transform: uppercase;
+    font-size: 24px;
+    margin-bottom: 30px;
+    border-left: 5px solid #4ca1af; /* Твой фирменный цвет */
+    padding-left: 15px;
+}
+
+/* Стилизация таблицы */
+.flights-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden; /* Чтобы скруглить углы у таблицы */
+}
+
+.flights-table thead {
+    background-color: #34495e; /* Темный фон для шапки */
+    color: white;
+}
+
+.flights-table th {
+    padding: 18px 15px;
+    text-align: left;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.flights-table td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    color: #555;
+    vertical-align: middle;
+}
+
+/* Эффект при наведении на строку */
+.flights-table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Стили для тега статуса (как на скриншоте) */
+.status-tag {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* Цена (Fare) */
+.fare-cell {
+    font-weight: bold;
+    color: #2c3e50;
+    font-size: 18px;
+}
+
+/* Кнопка CONTINUE */
+.continue-btn {
+    background: #4ca1af; /* Твой основной цвет из хедера */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.continue-btn:hover {
+    transform: scale(1.05);
+}
