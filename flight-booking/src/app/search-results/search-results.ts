@@ -48,7 +48,8 @@ export class SearchResults implements OnInit {
   this.router.navigate(['/passenger-details'], {
     queryParams: {
       flightId: flight.id,
-      passengers: this.searchParams.passengers || 1
+      passengers: this.searchParams.passengers || 1,
+      price: flight.price
     }
   });
 }

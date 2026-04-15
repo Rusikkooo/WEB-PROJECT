@@ -4,6 +4,7 @@ import { Register } from './register/register';
 import { Home } from './home/home';
 import { SearchResults } from './search-results/search-results';
 import { PassengerDetails } from './passenger-details/passenger-details';
+import { PayInvoice } from './pay-invoice/pay-invoice';		
 
 export const routes: Routes = [
 	{ path: 'login', component: Login },
@@ -11,5 +12,6 @@ export const routes: Routes = [
     {path:'home',component:Home},
 	{ path: '', redirectTo: 'login', pathMatch: 'full' },
 	{ path: 'search-results', component:SearchResults },
-	{ path: 'passenger-details', component: PassengerDetails }
+	{ path: 'passenger-details', component: PassengerDetails },
+	{ path: 'pay-invoice', component: PayInvoice }
 ];

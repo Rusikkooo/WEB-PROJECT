@@ -1,0 +1,157 @@
+/* Основной контейнер на весь экран */
+.pay-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #cbd5e0 0%, #a0aec0 100%); /* Мягкий градиент как на макете */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Белая карточка оплаты */
+.pay-card {
+    background: white;
+    width: 100%;
+    max-width: 450px;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    text-align: center;
+}
+
+h2 {
+    color: #2d3748;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.price-badge {
+    background: #edf2f7;
+    color: #2b6cb0;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+/* Стили полей ввода */
+.field {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.field label {
+    display: block;
+    font-size: 0.85rem;
+    color: #718096;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.field input {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #e2e8f0;
+    padding: 10px 0;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.field input:focus {
+    border-bottom-color: #3182ce;
+}
+
+/* Стили для ошибок валидации */
+.error {
+    color: #e53e3e;
+    font-size: 0.75rem;
+    margin-top: 5px;
+    display: block;
+}
+
+input.ng-invalid.ng-touched {
+    border-bottom-color: #e53e3e;
+}
+
+/* Строка для Expiry и CVV */
+.row {
+    display: flex;
+    gap: 20px;
+}
+
+.row .field {
+    flex: 1;
+}
+
+/* Кнопка оплаты */
+.pay-btn {
+    width: 100%;
+    background: #38a169; /* Зеленый цвет для кнопки Pay */
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    margin-top: 10px;
+}
+
+.pay-btn:hover:not(:disabled) {
+    background: #2f855a;
+    transform: translateY(-1px);
+}
+
+.pay-btn:disabled {
+    background: #a0aec0;
+    cursor: not-allowed;
+}
+
+/* --- Секция анимаций (Processing & Success) --- */
+
+.loader-container, .success-container {
+    padding: 40px 0;
+}
+
+/* Спиннер */
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #3182ce;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Галочка успеха */
+.checkmark {
+    width: 80px;
+    height: 80px;
+    background: #c6f6d5;
+    color: #38a169;
+    font-size: 50px;
+    line-height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes scaleIn {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.success-text {
+    color: #2f855a;
+    font-size: 1.2rem;
+    font-weight: 600;
+}

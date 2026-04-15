@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 export class PassengerDetails implements OnInit {
   passengers: any[] = []; // Здесь будут данные всех пассажиров
   flightId: string = '';
+  ticketPrice: number = 0;
 
   constructor(private route: ActivatedRoute, private router: Router) {}
 
@@ -22,6 +23,7 @@ export class PassengerDetails implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.flightId = params['flightId'];
       const count = +params['passengers'] || 1; // Превращаем строку в число
+      this.ticketPrice = +params['price'] || 0; // Получаем цену билета
       
       // Создаем пустые объекты для каждого пассажира
       this.passengers = Array.from({ length: count }, () => ({
@@ -37,5 +39,11 @@ export class PassengerDetails implements OnInit {
   onProceed() {
     console.log('Данные всех пассажиров:', this.passengers);
     // Здесь будет переход к билету
+    const totalToPay = this.passengers.length * this.ticketPrice;
+    this.router.navigate(['/pay-invoice'], {
+      queryParams: {
+        total: totalToPay
+      }
+    });
   }
 }
