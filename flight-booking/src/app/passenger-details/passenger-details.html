@@ -1,0 +1,42 @@
+<div class="booking-container">
+    <h2 class="main-title">PASSENGER DETAILS</h2>
+    <div class="forms-wrapper">
+        @for (p of passengers; track $index) {
+            <div class="passenger-card">
+                <h3 class="passenger-number">Passenger {{ $index + 1 }}</h3>
+
+                <div class="dotted-box">
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Firstname</label>
+                            <input type="text" [(ngModel)]="p.firstName" placeholder="e.g. Henry">
+                        </div>
+
+                        <div class="input-group">
+                            <label>Middlename</label>
+                            <input type="text" [(ngModel)]="p.middleName" placeholder="I">
+                        </div>
+
+                        <div class="input-group">
+                            <label>Lastname</label>
+                            <input type="text" [(ngModel)]="p.lastName" placeholder="Smith">
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Contact No</label>
+                            <input type="text" [(ngModel)]="p.contactNo" placeholder="7412585555">
+                        </div>
+                        <div class="input-group">
+                            <label>Date of Birth</label>
+                            <input type="date" [(ngModel)]="p.dob">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="action-area">
+        <button class="proceed-btn" (click)="onProceed()"><span class="icon">➔</span> Proceed</button>
+    </div>
+</div>

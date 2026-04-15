@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { OnInit } from '@angular/core';
+import{ ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-home',
   imports: [FormsModule,CommonModule],
@@ -9,7 +11,8 @@ import { Router } from '@angular/router';
   styleUrl: './home.css',
 })
 export class Home {
-  isRoundTrip: boolean = false;
+  isRoundTrip: boolean = false; // false - только туда, true - туда и обратно
+  passengerCount: number = 1;
   constructor(private router: Router) {}
 
   cities: string[] = ['Almaty', 'Aktobe', 'Astana', 'Shymkent', 'Atyrau','Kokshetau','Kostanay','Karaganda','Pavlodar','Petropavlovsk','Taraz','Uralsk','Ust-Kamenogorsk','Zhezkazgan','Zhanaozen','Semey','Kyzylorda','Taldykorgan','Ekibastuz'];
@@ -19,7 +22,7 @@ export class Home {
     to:'',
     date: '',
     returnDate: '',
-    passengers: 1
+    passengers: this.passengerCount
   };
   
 
@@ -36,15 +39,16 @@ export class Home {
   
   onSearch() {
     console.log('Ищем рейсы:', this.searchQuery);
+    this.searchQuery.passengers = this.passengerCount;
+
     this.router.navigate(['/search-results'], { 
       queryParams: {
         from: this.searchQuery.from,
         to: this.searchQuery.to,
         date: this.searchQuery.date,
-        // returnDate: this.searchQuery.returnDate,
-        // passengers: this.searchQuery.passengers,
+        passengers: this.passengerCount, 
+        returnDate: this.isRoundTrip ? this.searchQuery.returnDate : null,
         isRoundTrip: this.isRoundTrip
-        
       }
     });
     // this.isLoading = true;
