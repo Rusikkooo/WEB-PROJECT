@@ -222,3 +222,16 @@ nav a:hover {
 .logout-btn:active {
     background: #c0392b;
 }
+.error-msg {
+    color: #ff4d4d;
+    font-size: 11px;
+    position: absolute; 
+    bottom: -18px;
+    left: 0;
+    white-space: nowrap;
+}
+
+.field {
+    position: relative; /* Чтобы absolute внутри работал корректно */
+    margin-bottom: 20px;
+}

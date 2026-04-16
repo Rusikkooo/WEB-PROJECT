@@ -4,10 +4,8 @@
             <h2>Online Flight Booking</h2>
         </div>
         <nav>
-            <a href="#">My Flights</a>
-            <!-- <br> -->
-            <a href="#">Tickets</a>
-            <!-- <br> -->
+            <a routerLink="/home">My Flights</a> 
+            <a routerLink="/tickets">Tickets</a> 
             <button (click)="onLogout()" class="logout-btn">Выйти</button>
         </nav>
     </header>
@@ -22,41 +20,46 @@
             <div class="inputs-grid">
                 <div class="field">
                     <label>From</label>
-                    <select [(ngModel)]="searchQuery.from" name="from">
-                    <option value="" disabled selected>Departure</option>
-                    @for (city of cities; track city) {
-                        <option [value]="city">{{ city }}</option>
-            }
-        </select>
-    </div>
-                <div class="field">
-                    <label>To</label>
-                    <select [(ngModel)]="searchQuery.to" name="to">
-                        <option value="" disabled selected>Arrival</option>
+                    <select (ngModelChange)="checkAvailability()" [(ngModel)]="searchQuery.from" name="from">
+                        <option value="" disabled selected>Departure</option>
                         @for (city of cities; track city) {
                             <option [value]="city">{{ city }}</option>
                         }
                     </select>
                 </div>
+
+                <div class="field">
+                    <label>To</label>
+                    <select (ngModelChange)="checkAvailability()" [(ngModel)]="searchQuery.to" name="to">
+                        <option value="" disabled selected>Arrival</option>
+                            @for (city of cities; track city) {
+                                <option [value]="city">{{ city }}</option>
+                            }
+                    </select>
+                </div>
+
                 <div class="field">
                     <label>Passenger</label>
                     <input type="number" [(ngModel)]="passengerCount" min="1" max="10">
                 </div>
+
                 <div class="field">
-                    <label>Depart</label>
-                    <input type="date" [(ngModel)]="searchQuery.date">
+                <label>Depart</label>
+                <input (ngModelChange)="checkAvailability()" type="date" [(ngModel)]="searchQuery.date">
+                    @if (dateError) {
+                        <small class="error-msg">{{ dateError }}</small>
+                    }
                 </div>
-                
+
                 @if (isRoundTrip) {
                     <div class="field">
                         <label>Return</label>
-                        <input type="date" [(ngModel)]="searchQuery.returnDate">
+                        <input (ngModelChange)="checkAvailability()" type="date" [(ngModel)]="searchQuery.returnDate">
                     </div>
-        }
-                
+    }
             </div>
 
-            <button class="search-btn" (click)="onSearch()">поиск рейсов</button>
+            <button  class="search-btn" (click)="onSearch()">поиск рейсов</button>
         </div>
     </main>
     <section class="results">

@@ -40,10 +40,18 @@ export class PassengerDetails implements OnInit {
     console.log('Данные всех пассажиров:', this.passengers);
     // Здесь будет переход к билету
     const totalToPay = this.passengers.length * this.ticketPrice;
+    const mainPassenger = `${this.passengers[0].firstName} ${this.passengers[0].lastName}`;
+    const currentParams = this.route.snapshot.queryParams;
     this.router.navigate(['/pay-invoice'], {
       queryParams: {
-        total: totalToPay
-      }
+        total: totalToPay,
+      // Добавляем данные для билета, которые пришли из Home
+        from: currentParams['from'],
+        to: currentParams['to'],
+        date: currentParams['date'],
+        passenger: mainPassenger, // Передаем имя для печати на билете
+        airline: currentParams['airline'] || 'AERO AIRWAYS'
+    }
     });
   }
 }

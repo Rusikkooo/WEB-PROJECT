@@ -1,0 +1,64 @@
+<div class="tickets-page">
+    <h1 class="page-title">My Tickets</h1>
+    
+    <div class="tickets-list">
+        @for (ticket of myTickets; track ticket.id) {
+            <div class="boarding-pass">
+                
+                <div class="ticket-main">
+                    <div class="ticket-header">
+                        <span class="logo-text">Online Flight Booking</span>
+                        <span class="class-label">ECONOMY CLASS</span>
+                    </div>
+
+                    <div class="route-info">
+                        <div class="detail">
+                            <label>FROM</label>
+                            <span class="value">{{ ticket.from }}</span>
+                        </div>
+                        <div class="plane-icon">✈</div>
+                        <div class="detail">
+                            <label>TO</label>
+                            <span class="value">{{ ticket.to }}</span>
+                        </div>
+                    </div>
+
+                    <div class="passenger-info">
+                        <label>PASSENGER NAME</label>
+                        <span class="value">{{ ticket.passenger }}</span>
+                    </div>
+
+                    <div class="flight-details">
+                        <div class="detail">
+                            <label>DATE</label>
+                            <span class="value">{{ ticket.date }}</span>
+                        </div>
+                        <div class="detail">
+                            <label>GATE</label>
+                            <span class="value">{{ ticket.gate }}</span>
+                        </div>
+                        <div class="detail">
+                            <label>SEAT</label>
+                            <span class="value">{{ ticket.seat }}</span>
+                        </div>
+                    </div>
+                </div> <div class="ticket-stub">
+                    <div class="stub-info">
+                        <label>FLIGHT ID</label>
+                        <span>#{{ ticket.id.toString().slice(-5) }}</span>
+                    </div>
+                    <div class="barcode">
+                        Thank you for choosing us
+                        <br />
+                    </div>
+                    <button class="del-btn" (click)="deleteTicket(ticket.id)">✕</button>
+                </div>
+
+            </div> } @empty {
+            <div class="no-tickets">
+                <p>У вас пока нет купленных билетов.</p>
+                <button class="find-btn" routerLink="/home">Найти рейсы</button>
+            </div>
+        }
+    </div>
+</div>
