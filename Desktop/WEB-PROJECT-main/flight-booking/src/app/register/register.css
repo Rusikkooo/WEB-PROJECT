@@ -1,0 +1,16 @@
+.success-banner {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #c8e6c9;
+    margin-bottom: 20px;
+    font-size: 14px;
+    text-align: center;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

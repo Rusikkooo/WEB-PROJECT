@@ -1,0 +1,33 @@
+<div class="results-header">
+    <h1>FLIGHTS FROM: {{ searchParams.from }} to {{ searchParams.to }}</h1>
+</div>
+
+<table class="flights-table">
+    <thead>
+        <tr>
+            <th>Airline</th>
+            <th>Departure</th>
+            <th>Arrival</th>
+            <th>Status</th>
+            <th>Fare</th>
+            <th>Buy</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (flight of filteredFlights; track flight.id) {
+        <tr>
+            <td>{{ flight.airline }}</td>
+            <td>{{ flight.departure }}</td>
+            <td>{{ flight.arrival }}</td>
+            <td><span class="status-tag">Not yet Departed</span></td>
+            <td>{{ flight.price }} KZT</td>
+            <td><button class="continue-btn">Continue</button></td>
+        </tr>
+        } 
+        @empty {
+        <tr>
+            <td colspan="6" style="text-align: center;">Рейсов не найдено</td>
+        </tr>
+    }
+    </tbody>
+</table>

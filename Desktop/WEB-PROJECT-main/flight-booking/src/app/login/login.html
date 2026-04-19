@@ -1,0 +1,30 @@
+<div class="login-container">
+    @if (errorMessage) {
+        <div class="error-banner">
+            <span class="error-icon">✖</span>
+            {{ errorMessage }}
+        </div>
+    }
+    <h2>Вход в Flight Booking</h2>
+    
+    <form (submit)="onSubmit()">
+        <div class="form-group">
+        <label>Логин</label>
+        <input type="text" [(ngModel)]="userData.username" name="username" placeholder="Введите логин" required>
+        </div>
+
+    <div class="form-group">
+        <label>Пароль</label>
+        <input type="password" [(ngModel)]="userData.password" name="password" placeholder="Введите пароль" required>
+    </div>
+
+    <button type="submit" class="kaspi-button" [disabled]="isLoading">
+        @if (isLoading) {
+            Loading...
+        } @else {
+            Войти
+        }
+    </button>
+    <p>Нету аккаунта ? <a [routerLink]="['/register']">Создать аккаунт</a></p> 
+    </form>
+</div>

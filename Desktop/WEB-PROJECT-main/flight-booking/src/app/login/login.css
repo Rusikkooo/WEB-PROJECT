@@ -1,0 +1,31 @@
+.error-banner {
+    background-color: #fce4e4; /* Светло-красный фон */
+    border: 1px solid #f44336; /* Красная рамка */
+    color: #d32f2f; /* Темно-красный текст */
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    animation: shake 0.5s; /* Эффект тряски при появлении */
+}
+
+.error-icon {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+/* Анимация для привлечения внимания */
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+/* Красная подсветка инпутов при ошибке */
+input.invalid {
+    border: 1px solid #f44336;
+}
